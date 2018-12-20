@@ -1,0 +1,70 @@
+<rt-import name="*" as="Components" from="components" />
+<rt-import name="*" as="Containers" from="containers" />
+
+<Components.Fragment>
+
+    <header class="header">
+       <div class="container">
+            <div class="flex-container align-justify align-middle">
+                <!-- left -->
+                <div>
+                    <i class="header__icon--menu icon icon-menu hoverable" onClick="e => this.open('navigation')" />
+                    <span class="header__title">
+                        <a href="/">
+                            <b>EOS</b>Votes
+                            <span class="header__logo">
+                                <rt-include src="./logo.svg" />
+                            </span>
+                            <b>Beta</b>
+                        </a>
+                    </span>
+                </div>
+                <!-- right -->
+                <span>
+                    <a rt-if="!this.props.client" href="https://get-scatter.com/" target="new" class="button show-for-large small">
+                        Install
+                        <span class="header__scatter">
+                            <rt-include src="./scatter.svg" />
+                        </span>
+                    </a>
+                    <span rt-if="this.props.client" onClick="()=>this.props.getIdentity()" class="button show-for-large small">
+                        <Components.Fragment rt-if="this.props.identity">
+                          Welcome {this.props.identity.name}
+                        </Components.Fragment>
+                        <Components.Fragment rt-if="!this.props.identity">
+                          Login With
+                          <span class="header__scatter">
+                              <rt-include src="./scatter.svg" />
+                          </span>
+                        </Components.Fragment>
+                    </span>
+                    <select class="header__language dropdown show-for-medium">
+                        <option>eng</option>
+                    </select>
+                    <span onClick="e => this.open('search')" class="hide-for-medium hoverable">
+                        <i class="header__icon icon icon-search" rt-if="!this.props.filters" />
+                        <span rt-if="this.props.filters">
+                            <i class="header__icon icon icon-filter" />
+                            { this.props.filters }
+                        </span>
+                    </span>
+                </span>
+            </div>
+        </div>
+    </header>
+
+    <div class="header-placeholder" />
+
+    <Components.Popup on="{this.state.navigation}" onClose="e => this.close('navigation')">
+        <Components.Navigation rt-props="this.props"/>
+    </Components.Popup>
+
+    <Components.Popup on="{this.state.search}" onClose="e => this.close('search')">
+        <div class="menu">
+            <Containers.Search onSubmit="e => this.close('search')" />
+            <p class="menu__tooltip" rt-if="!this.props.filters">Search by title, account name and/or date</p>
+            <Containers.Filters onRemove="e => this.close('search')" />
+        </div>
+    </Components.Popup>
+
+</Components.Fragment>

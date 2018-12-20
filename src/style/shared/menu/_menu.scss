@@ -1,0 +1,84 @@
+.menu {
+
+  background: color(dark);
+  bottom: 0;
+  color: lighten(color(dark), 50);
+  left: 0;
+  min-width: 18em;
+  padding: 0.75em 2em;
+  padding-left: 2em + 3em;
+  position: fixed;
+  top: 0;
+  transform: translateX(-100%);
+  transition: transform $popup_transition_duration/2 cubic-bezier(0.175, 0.885, 0.32, 1.175);
+  z-index: 101;
+
+  @include breakpoint(small only) {
+    font-size: 0.7em;
+  }
+
+  @include breakpoint(medium) {
+    padding: 2.8em 3.5em;
+    padding-left: 3.5em+3em;
+  }
+
+  .visible > & {
+    transform: translateX(-3em);
+  }
+
+  .leaving > & {
+    transform: translateX(-100%);
+  }
+
+  &__title {
+    @extend .title, .uc;
+    border-bottom: 0.2em solid;
+    padding-bottom: 0.75em;
+    text-align: center;
+  }
+
+  &__tooltip {
+    font-size: 1.35em;
+    opacity: 0.5;
+  }
+
+  ul {
+
+    @extend .uc;
+    font-family: AvenirNext, sans-serif;
+
+    li + li {
+      border-top: 1px solid;
+    }
+
+    a,
+    span {
+      @extend .text-overflow;
+      cursor: pointer;
+      display: block;
+      padding: 1.5em 0;
+      white-space: nowrap;
+    }
+
+    .icon {
+      font-size: 1.5em;
+      text-align: center;
+      width: 2.2em;
+    }
+
+    .icon-close {
+      margin-left: -0.5em;
+    }
+  }
+
+  .filters {
+    margin-top: 1em;
+    max-width: 20em;
+  }
+
+  .error {
+    font-size: 0.9em;
+  }
+
+}
+

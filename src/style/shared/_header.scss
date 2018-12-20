@@ -1,0 +1,60 @@
+.header {
+
+  @extend %section;
+  background: lighten(color(gray), 7.5);
+  border-bottom: 2px solid color(gray);
+  color: darken(color(gray), 35);
+  font-family: AvenirNext, sans-serif;
+  left: 0;
+  line-height: 1;
+  padding-bottom: 1.1em;
+  padding-top: 1.1em;
+  position: fixed;
+  right: 0;
+  top: 0;
+  z-index: 5;
+
+  &__icon {
+    font-size: 1.25em;
+
+    &--menu {
+      @extend .header__icon;
+      margin-right: 1em;
+
+      @include breakpoint(medium) {
+        font-size: 1.65em;
+        margin-left: -0.3em;
+      }
+    }
+  }
+
+  &__title {
+    @include responsive(font-size, 1em 1.2em 1.8em);
+    color: black;
+    letter-spacing: 0.045em;
+    text-transform: uppercase;
+    vertical-align: middle;
+  }
+
+  &__logo {
+    font-size: 1.5em;
+    margin-left: -0.05em;
+  }
+
+  &__scatter {
+    display: inline-block;
+    font-size: 0.8em;
+    margin: 0 1.1em;
+    transform: scale(2.3) translateY(-16%);
+  }
+
+  &__language {
+    @include breakpoint(xxlarge) {
+      margin: 0 1em;
+    }
+  }
+}
+
+.header-placeholder {
+  @include responsive(height, 3.78em 4.3em 5.08em);
+}

@@ -1,0 +1,58 @@
+<rt-import name="*" as="Components" from="components" />
+<rt-import name="*" as="Containers" from="containers" />
+
+<Components.Fragment>
+
+    <Containers.Header rt-props="this.props" />
+
+    <section class="section home">
+        <div class="container">
+
+            <div class="home-welcome card">
+                <div class="home-welcome__container">
+                    <div class="home-welcome__copy">
+                        <h1 class="title uc">Welcome to EOSVotes.io!</h1>
+                        <p>Welcome to the EOSVotes.io! A way for you to help shape how EOS evolves. Please click the links below to learn more about how to use this portal.</p>
+                    </div>
+                    <div class="spacing text-center">
+                        <span class="medium-button primary-button liquid-for-small">
+                            <a href="/about">
+                                <span class="regular hide-for-medium">New? </span>
+                                <span class="regular show-for-medium">New to eos? <i class="home-welcome__chevron icon icon-chevron-right show-for-medium" /> </span>
+                                start here.
+                            </a>
+                        </span>
+                    </div>
+                </div>
+                <div class="card-spacing">
+                    <p class="home-welcome__button-container">
+                        <a class="home-welcome__button" href="/proxy">proxy vote</a>
+                        <a class="home-welcome__button" href="/forum">forum</a>
+                        <a class="home-welcome__button" href="https://eosvotes.io/about#referendum">referendum</a>
+                        <a class="home-welcome__button" href="/wps">worker proposals</a>
+                    </p>
+                </div>
+            </div>
+
+            <!-- Implement this later
+            <div class="small-spacing show-for-medium">
+                <Containers.Search />
+            </div>
+
+            <div class="small-spacing show-for-medium">
+                <Containers.Filters />
+            </div>
+            -->
+
+            <Containers.ReferendumList />
+
+
+        </div>
+    </section>
+
+    <Components.Footer />
+
+    <Containers.ReferendumPopup   rt-props="this.props"/>
+
+
+</Components.Fragment>

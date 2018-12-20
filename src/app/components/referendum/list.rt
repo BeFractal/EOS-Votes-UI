@@ -1,0 +1,25 @@
+<rt-import name="*" as="Components" from="components" />
+<rt-import name="*" as="Containers" from="containers" />
+
+<Components.Fragment>
+
+    <div class="small-spacing" rt-if="this.props.referendums">
+        <Components.CardCollapsable rt-repeat="referendum in this.props.referendums.items" key={referendum.proposal_name} title={referendum.title} class="bleed-for-small">
+            <Containers.ReferendumBrief rt-props="referendum" />
+        </Components.CardCollapsable>
+    </div>
+
+    <p class="medium-spacing text-center" rt-if="this.props.referendums && !this.props.referendums.fetching">
+        <span rt-if="this.props.referendums.more" class="medium-button liquid-for-small" onClick="e => this.props.next()">
+            <i class="invisible">...</i> Load more ...
+        </span>
+        <span rt-if="!this.props.referendums.more" class="medium-button liquid-for-small">
+            All loaded!
+        </span>
+    </p>
+
+    <p class="medium-spacing text-center uc" rt-if="!this.props.referendums || this.props.referendums.fetching ">
+        <i class="invisible">...</i> Loading ...
+    </p>
+
+</Components.Fragment>
